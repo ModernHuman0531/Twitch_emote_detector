@@ -1,0 +1,20 @@
+# Specifies use Poetry as the build system
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.poetry]
+name = "Ding-emotes-detector"
+version = "0.1.0"
+description = "A program use machine learning to detect user's emote and match with Dingding248 twitch emotes"
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.9 <3.11"
+numpy = "^1.21.0"
+opencv-python = "^4.9.0"
+scikit-learn = "^1.3.0"
+mediapipe = "0.10.11"
+pandas = "^1.5.0"
