@@ -1,6 +1,6 @@
 from sklearn.ensemble import RandomForestClassifier
-from sklearn_model_selection import train_test_split
-from sklearn_metrics import classification_report, accuracy_score
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report, accuracy_score
 import os
 import joblib
 import numpy as np
@@ -10,7 +10,7 @@ class PoseClassifyModel:
         self.model = RandomForestClassifier(
             n_estimators=100,
             max_depth=10,
-            min_simples_split=5,
+            min_samples_split=5,
             min_samples_leaf=2,
             random_state=42,
             n_jobs=-1
@@ -43,11 +43,11 @@ class PoseClassifyModel:
         print(f"Model accuracy: {accuracy*100: .2f}%")
 
         print("Classification Report:")
-        print(classification_report(y_pred, y_test, target_names=[self.pose_labels[idx] for idx in sorted(self.pose_labels.keys())]))
+        print(classification_report(y_test, y_pred, target_names=[self.pose_labels[idx] for idx in sorted(self.pose_labels.keys())]))
 
         # Save the trained model
 
-    def predic(self, X):
+    def predict(self, X):
         """
         Because of we use real-time data, so we can't just use predict function.
         Instead, we use predict_proba to get the probabilities of each class,
