@@ -115,3 +115,4 @@ class HolisticDetector:
                 connection_drawing_spec = HAND_CONNECTIONS
             )
         return frame
+
