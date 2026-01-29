@@ -172,3 +172,7 @@ class DataCollector:
         y = data['y']
         print(f"Data loaded from {file_path}, total samples: {len(y)}")
         return X, y
+
+if __name__ == '__main__':
+    collector = DataCollector()
+    collector.collect_data()
