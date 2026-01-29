@@ -45,7 +45,6 @@ class PoseClassifyModel:
         print("Classification Report:")
         print(classification_report(y_test, y_pred, target_names=[self.pose_labels[idx] for idx in sorted(self.pose_labels.keys())]))
 
-        # Save the trained model
 
     def predict(self, X):
         """
