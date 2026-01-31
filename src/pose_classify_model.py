@@ -16,7 +16,6 @@ class PoseClassifyModel:
             n_jobs=-1
         )
         self.pose_labels = {
-            0: "Unknown",
             1: "Proud",
             2: "Laugh",
             3: "Upset",
@@ -58,8 +57,8 @@ class PoseClassifyModel:
         # Get the highest probability and its corresponding label
         max_probability = np.max(probabilities)
         max_index = np.argmax(probabilities)
-        # Get the corresponding pose label
-        pose_label = self.pose_labels[max_index]
+        # Get the corresponding pose label (convert 0-based index to 1-based key)
+        pose_label = self.pose_labels[max_index + 1]
 
         return pose_label, max_probability
 
