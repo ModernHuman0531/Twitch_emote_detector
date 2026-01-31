@@ -1,5 +1,8 @@
 SPECIFIED-PYTHON=3.10
-TARGET_FILE=main.py
+TARGET_FILE=src/main.py
+
+
+vpath %.py src
 # Declare phony targets to avoid conflicts with files of the same name
 .PHONY: all check-tools setup init shell run clean purge
 
