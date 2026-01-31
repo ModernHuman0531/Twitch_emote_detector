@@ -62,7 +62,7 @@ def main():
     cap.set(cv.CAP_PROP_BUFFERSIZE, 1)     # reduce buffer to minimize delay
 
     # Set the confidence threshold for displaying predictions
-    confidence_threshold = 0.7
+    confidence_threshold = 0.65
 
     while cap.isOpened():
         ret, frame = cap.read()
