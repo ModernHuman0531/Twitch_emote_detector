@@ -14,11 +14,11 @@ class DataCollector:
         self.model = PoseClassifyModel()
         # Initialize variables for collecting data
         self.current_pose = 0 # Default to "Unknown"
-        self.frame_delay = 10 # Collect data every 10 frames
+        self.frame_delay = 5 # Collect data every 5 frames
         self.frame_count = 0
         self.auto_collect = False
         self.collected_samples = 0 # Initialize to 0 in every run for one pose
-        self.sample_per_pose = 200 # Number of samples to collect per pose
+        self.sample_per_pose = 100 # Number of samples to collect per pose
         self.data_folder = os.path.join('..', 'data')
         self.data_name = 'collected_data.npz'
 
@@ -30,7 +30,6 @@ class DataCollector:
         self.cap.set(cv.CAP_PROP_BUFFERSIZE, 1)
 
         self.pose_labels = {
-            0: "Unknown",
             1: "Proud",
             2: "Laugh",
             3: "Upset",
