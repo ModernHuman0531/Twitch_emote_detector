@@ -1,5 +1,6 @@
 from holistic_detector import HolisticDetector
 from pose_classify_model import PoseClassifyModel
+from preprocessor import Preprocessor
 import numpy as np
 import cv2 as cv
 import os
@@ -48,6 +49,9 @@ def main():
 
     # Initialize Pose Classification model
     model = PoseClassifyModel(model_name='pose_classify_model.pkl')
+    
+    # Initialize Preprocessor
+    preprocessor = Preprocessor()
 
     # Open the webcam with optimized settings
     cap = cv.VideoCapture(0)
@@ -71,7 +75,7 @@ def main():
         frame = detector.draw_landmarks(frame, results)
 
         # Extract features
-        feature_vector = detector.preprocess_landmarks(results)
+        feature_vector = preprocessor.extract_landmarks(results)
         # Reshape feature vector for prediction into 2D array
         feature_vector = np.array(feature_vector).reshape(1,-1)
         # Predict the pose label and its probability
@@ -100,6 +104,9 @@ def main():
             # Named the new file with incremented number
             image_name = f"capture_{file_num+1}.png"
             cv.imwrite(os.path.join(save_path, image_name),frame)
+        
+        # Display the webcam frame with landmarks
+        cv.imshow("Webcam Feed", frame)
 
             
     # Close the webcam and destroy all windows
